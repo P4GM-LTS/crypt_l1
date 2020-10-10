@@ -1,4 +1,4 @@
-const server = "https://polybian-square.herokuapp.com/";
+const server = "https://polybian-square.herokuapp.com";
 const xhr = new XMLHttpRequest();
 
 function EncodeRequest(text) {
