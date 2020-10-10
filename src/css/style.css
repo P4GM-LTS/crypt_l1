@@ -1,0 +1,150 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    font-family: 'Jost', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    background: gray;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    transition: all .3s ease-in-out;
+}
+
+.main .title {
+    font-size: 1.6vw;
+    font-weight: 500;
+    color: rgb(1, 1, 1);
+    margin-top: 0;
+}
+
+.main .switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 30%;
+    height: 5%;
+    margin-bottom: 1%;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+    background: rgb(57, 57, 57);
+
+}
+.main .switcher .encr {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    font-size: 1.3vw;
+    filter: blur(4px);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.main .switcher .decr {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    font-size: 1.3vw;
+    filter: blur(4px);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.main .switcher .encr:hover, .main .switcher .decr:hover {
+    filter: none;
+}
+
+.main .input_form {
+    font-family: Jost;
+    font-weight: 500;
+    font-size: 1.4vw;
+    outline: none;
+    border: 1px solid rgb(97, 97, 97);
+    background: rgb(57, 57, 57);
+    color: white;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+
+.main textarea {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    width: 30%;
+    height: 10%;
+    resize: none;
+    font-family: Jost;
+    font-weight: 500;
+    font-size: 1vw;
+    outline: none;
+    padding: 0 1vw 0 1vw;
+    margin-bottom: 1%;
+    border: 1px solid rgb(97, 97, 97);
+    background: rgb(57, 57, 57);
+    overflow: auto;
+}
+
+.main .buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 5%;
+    width: 30%;
+}
+
+.main .buttons .button_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40%;
+    margin-top: 1%;
+    font-size: 1.3vw;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    background: rgb(57, 57, 57);
+    cursor: pointer;
+}
+
+.main #status {
+    margin-top: 1%;
+    color: black;
+    font-weight: 500;
+    font-size: 1.3vw;
+
+}
+
+.main #textarea {
+    display: none;
+}
+.main #key {
+    display: none;
+    height: 5%;
+}
+
+.main .buttons #enc_button {
+    display: none;
+}
+
+.main .buttons #dec_button {
+    display: none;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.6;
+}
