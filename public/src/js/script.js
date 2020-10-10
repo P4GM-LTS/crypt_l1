@@ -1,4 +1,4 @@
-const server = "http://192.168.1.128:80";
+const server = "https://polybian-square.herokuapp.com/";
 const xhr = new XMLHttpRequest();
 
 function EncodeRequest(text) {
