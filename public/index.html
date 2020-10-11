@@ -68,6 +68,11 @@
                     });
                 });
                 $(document).ready(function() {
+                    if (window.innerWidth < window.innerHeight && window.innerWidth < 760) {
+                        $('body').css({
+                            'height':`${innerHeight}`
+                        })
+                    }
                     $('.input_form').keypress((e) => {
                         if (e.keyCode == 13) {
                             return false;
