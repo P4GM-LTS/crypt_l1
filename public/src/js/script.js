@@ -12,7 +12,7 @@ function EncodeRequest(text) {
         let response = xhr.response.substring(1, (xhr.response.length-1));
         let responseText = response.substring(1, (response.indexOf(',') - 1));
         let responseKey = response.substring(response.indexOf(',') + 2, (response.length - 1));
-        document.getElementById('textarea').value = responseText;
+        document.getElementById('textarea').value = b64_to_utf8(responseText);
         document.getElementById('key').style.display = 'flex';
         document.getElementById('key').value = responseKey;
     }
@@ -34,7 +34,7 @@ function DecodeRequest(text, key) {
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhr.send(`str=${utf8_to_b64(text.toLowerCase())}&key=${utf8_to_b64(key)}`);
     xhr.onload = () => {
-        document.getElementById('textarea').value = xhr.response;
+        document.getElementById('textarea').value = b64_to_utf8(xhr.response);
     }
     xhr.onerror = () => {
         document.getElementById('status').textContent = 'Ошибка соединения... Т_Т';
@@ -47,3 +47,6 @@ function utf8_to_b64(str) {
     return window.btoa(unescape(encodeURIComponent(str)));
 }
 
+function b64_to_utf8(str) {
+    return decodeURIComponent(escape(window.atob(str)));
+}
