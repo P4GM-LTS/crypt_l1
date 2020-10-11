@@ -7,7 +7,7 @@ function EncodeRequest(text) {
     }
     xhr.open('POST', server + '/encode', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(`str=${text.toLowerCase()}`);
+    xhr.send(`str=${utf8_to_b64(text.toLowerCase())}`);
     xhr.onload = () => {
         let response = xhr.response.substring(1, (xhr.response.length-1));
         let responseText = response.substring(1, (response.indexOf(',') - 1));
@@ -32,7 +32,7 @@ function DecodeRequest(text, key) {
     }
     xhr.open('POST', server + '/decode', true);
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhr.send(`str=${text.toLowerCase()}&key=${key}`);
+    xhr.send(`str=${utf8_to_b64(text.toLowerCase())}&key=${utf8_to_b64(key)}`);
     xhr.onload = () => {
         document.getElementById('textarea').value = xhr.response;
     }
@@ -43,5 +43,7 @@ function DecodeRequest(text, key) {
         document.getElementById('status').textContent = `Загрузка... ${e.loaded} из ${e.total}`;
     }
 }
-
+function utf8_to_b64(str) {
+    return window.btoa(unescape(encodeURIComponent(str)));
+}
 
