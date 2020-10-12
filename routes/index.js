@@ -17,7 +17,7 @@ router.post('/encode', urlencodedParser, (req, res)=>{
   let stringFromClient = b2u.b64_to_utf8(req.body.str);
   console.log(stringFromClient);
   console.log(errHandl(0,stringFromClient));
-  errHandl(0, stringFromClient)?res.status(400).send(errHandl(1)):res.status(200).send([b2u.utf8_to_b64(op.enc(op.sqr(stringFromClient)[0], stringFromClient)), b2u.utf8_to_b64(op.sqr(stringFromClient)[1])]);
+  errHandl(0, stringFromClient)?res.status(400).send(errHandl(0, stringFromClient)):res.status(200).send([b2u.utf8_to_b64(op.enc(op.sqr(stringFromClient)[0], stringFromClient)), b2u.utf8_to_b64(op.sqr(stringFromClient)[1])]);
 });
 router.post('/decode', urlencodedParser, (req, res)=>{
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -27,6 +27,6 @@ router.post('/decode', urlencodedParser, (req, res)=>{
   let keyFromClient = b2u.b64_to_utf8(req.body.key);
   console.log(stringFromClient, keyFromClient);
   console.log(errHandl(1,stringFromClient, keyFromClient));
-  errHandl(1,stringFromClient, keyFromClient)?res.status(400).send(errHandl(1)):res.status(200).send(b2u.utf8_to_b64(op.dec(op.sqr(keyFromClient)[0], stringFromClient)));
+  errHandl(1,stringFromClient, keyFromClient)?res.status(400).send(errHandl(1,stringFromClient, keyFromClient)):res.status(200).send(b2u.utf8_to_b64(op.dec(op.sqr(keyFromClient)[0], stringFromClient)));
 });
 module.exports = router;
